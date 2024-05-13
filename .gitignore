@@ -21,3 +21,10 @@ yarn.lock
 .DS_Store
 .lock
 .lock
+.venv
+.env
+.aider*
+.gitignore
+
+#Appmap
+appmap.yml

@@ -7,7 +7,7 @@ import {
   FileId,
   NonDeletedExcalidrawElement,
   ExcalidrawImageElement,
-  ExcalidrawTextElement,
+  ExcalidrawTextElement, 
   StrokeRoundness,
   RoundnessType,
   ExcalidrawFrameElement,
