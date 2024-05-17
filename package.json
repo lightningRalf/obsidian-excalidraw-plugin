@@ -15,7 +15,9 @@
     "madge": "madge --circular .",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "test:jsdom": "jest --config=jest.config.js --testPathPattern=__tests__/jsdom",
+    "test:node": "jest --config=jest.config.js --testPathPattern=__tests__/node"
   },
   "keywords": [],
   "author": "",
