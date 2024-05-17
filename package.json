@@ -12,7 +12,10 @@
     "build": "cross-env NODE_ENV=production rollup --config rollup.config.js",
     "lib": "cross-env NODE_ENV=lib rollup --config rollup.config.js",
     "code:fix": "eslint --max-warnings=0 --ext .ts,.tsx ./src --fix",
-    "madge": "madge --circular ."
+    "madge": "madge --circular .",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -56,6 +59,8 @@
     "cssnano": "^6.0.2",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
     "lz-string": "^1.5.0",
     "obsidian": "^1.4.0",
     "prettier": "^3.0.1",
