@@ -1,6 +1,6 @@
 The project runs with `node 18`. 
 
-After running `npm -i` you'll need to make two manual changes:
+After running `npm install` you'll need to make two manual changes:
 
 ## postprocess
 postprocess is used in rollup.config.js.
@@ -30,15 +30,3 @@ More info here: https://github.com/developit/rollup-plugin-postprocess/issues/10
       "default": "./plugins/ryb.mjs"
     }
 ```
-
-## Running Tests and Contributing to Test Development
-
-To run the Jest tests for the Excalidraw plugin, use the following command:
-
-```bash
-npm run test
-```
-
-This will execute all tests located in the `__tests__` directory and generate a coverage report. To contribute to test development, ensure you have a thorough understanding of the Excalidraw plugin's functionality and the Jest testing framework. Write tests that cover a wide range of scenarios, including edge cases, to ensure the robustness of the plugin's key components.
-
-For more information on test coverage and our testing philosophy, refer to the project's documentation on GitHub.
