@@ -1,6 +1,6 @@
 import { describe, it, expect, jest } from '@jest/globals';
-import ExcalidrawView from '../src/ExcalidrawView';
-import { ExcalidrawAutomate } from '../src/ExcalidrawAutomate';
+import ExcalidrawView from '../../src/ExcalidrawView';
+import { ExcalidrawAutomate } from '../../src/ExcalidrawAutomate';
 import { mockObsidian } from './__mocks__/obsidian';
 
 jest.mock('../src/ExcalidrawView');

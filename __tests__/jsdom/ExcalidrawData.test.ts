@@ -1,4 +1,4 @@
-import { ExcalidrawData } from "../src/ExcalidrawData";
+import { ExcalidrawData } from "../../src/ExcalidrawData";
 import { App, TFile } from "obsidian";
 import { mocked } from "ts-jest/utils";
 

@@ -1,4 +1,4 @@
-import { connectObjects } from '../src/ExcalidrawAutomate';
+import { connectObjects } from '../../src/ExcalidrawAutomate';
 
 describe('connectObjects functionality', () => {
   it('should return a string when connecting two objects', () => {

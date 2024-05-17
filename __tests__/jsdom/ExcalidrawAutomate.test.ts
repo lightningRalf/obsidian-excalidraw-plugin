@@ -1,5 +1,5 @@
-import { ExcalidrawAutomate } from "../src/ExcalidrawAutomate";
-import { mockApp, mockVault, mockMetadataCache, mockWorkspace } from "../__mocks__/obsidian";
+import { ExcalidrawAutomate } from "../../src/ExcalidrawAutomate";
+import { mockApp, mockVault, mockMetadataCache, mockWorkspace } from "../../__mocks__/obsidian";
 
 describe("ExcalidrawAutomate", () => {
   let ea: ExcalidrawAutomate;
