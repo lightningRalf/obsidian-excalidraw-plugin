@@ -15,9 +15,17 @@ data.json
 lib
 dist
 
-#VSCode
+# VSCode
 .vscode
 yarn.lock
 .DS_Store
 .lock
 .lock
+
+# Appmapp
+appmap.yml
+tmp/*
+
+# Others 
+obsidian-excalidraw-plugin.md
+code2prompt*
