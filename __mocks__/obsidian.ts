@@ -6,12 +6,10 @@ import { VaultMock } from "./obsidian/Vault";
 import { MetadataCacheMock } from "./obsidian/MetadataCache";
 import { WorkspaceMock } from "./obsidian/Workspace";
 
-module.exports = {
-	App: AppMock,
-	Plugin: PluginMock,
-	Modal: ModalMock,
-	PluginSettingTab: PluginSettingTabMock,
-	Vault: VaultMock,
-	MetadataCache: MetadataCacheMock,
-	Workspace: WorkspaceMock,
-};
+export const App = AppMock;
+export const Plugin = PluginMock;
+export const Modal = ModalMock;
+export const PluginSettingTab = PluginSettingTabMock;
+export const Vault = VaultMock;
+export const MetadataCache = MetadataCacheMock;
+export const Workspace = WorkspaceMock;

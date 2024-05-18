@@ -1,5 +1,5 @@
 import { ExcalidrawAutomate } from "../../src/ExcalidrawAutomate";
-import { AppMock as App, VaultMock as Vault, MetadataCacheMock as MetadataCache, WorkspaceMock as Workspace } from "../../__mocks__/obsidian";
+import { App, Vault, MetadataCache, Workspace } from "../../__mocks__/obsidian";
 
 
 describe("ExcalidrawAutomate", () => {
