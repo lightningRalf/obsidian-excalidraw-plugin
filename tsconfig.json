@@ -26,7 +26,6 @@
     "**/*.tsx",
     "src/Dialogs/OpenDrawing.ts",
     "src/types.d.ts",
-    "__tests__/**/*.ts", // Add this line to include your tests
-    "__tests__/**/*.tsx" // Add this if you have any .tsx test files
+    "__tests__/**/*.ts"
   ]
 }
