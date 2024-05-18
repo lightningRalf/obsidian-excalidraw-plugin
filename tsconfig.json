@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "sourceMap": false,
     "module": "es2015",
-    "target": "es2017", //es2017 because script engine requires for async execution
+    "target": "es2017", // es2017 because script engine requires for async execution
     "allowJs": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
@@ -17,11 +17,16 @@
       "esnext",
       "DOM.Iterable"
     ],
-    "jsx": "react"
+    "jsx": "react",
+    "outDir": "./dist", // Optional: where to output compiled files
+    "rootDir": "." // Optional: root directory of your source code
   },
   "include": [
     "**/*.ts",
-    "**/*.tsx", "src/Dialogs/OpenDrawing.ts",
-    "src/types.d.ts"
+    "**/*.tsx",
+    "src/Dialogs/OpenDrawing.ts",
+    "src/types.d.ts",
+    "__tests__/**/*.ts", // Add this line to include your tests
+    "__tests__/**/*.tsx" // Add this if you have any .tsx test files
   ]
 }

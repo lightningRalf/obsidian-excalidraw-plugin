@@ -9,6 +9,9 @@ module.exports = {
       moduleNameMapper: {
         '^obsidian$': '<rootDir>/__mocks__/obsidian.ts',
       },
+      transform: {
+        '^.+\\.tsx?$': 'ts-jest',
+      },
     },
     {
       displayName: 'node',
@@ -17,6 +20,9 @@ module.exports = {
       setupFilesAfterEnv: ['<rootDir>/__mocks__/obsidian.ts'],
       moduleNameMapper: {
         '^obsidian$': '<rootDir>/__mocks__/obsidian.ts',
+      },
+      transform: {
+        '^.+\\.tsx?$': 'ts-jest',
       },
     },
   ],

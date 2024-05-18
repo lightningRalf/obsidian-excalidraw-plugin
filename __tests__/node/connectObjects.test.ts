@@ -1,8 +1,14 @@
-import { connectObjects } from '../../src/ExcalidrawAutomate';
+import { ExcalidrawAutomate } from '../../src/ExcalidrawAutomate';
 
 describe('connectObjects functionality', () => {
+  let ea: ExcalidrawAutomate;
+
+  beforeEach(() => {
+    ea = new ExcalidrawAutomate();
+  });
+
   it('should return a string when connecting two objects', () => {
-    const result = connectObjects(
+    const result = ea.connectObjects(
       'objectA',
       null,
       'objectB',
@@ -19,7 +25,7 @@ describe('connectObjects functionality', () => {
   });
 
   it('should throw an error when either objectA or objectB is not found', () => {
-    expect(() => connectObjects('unknownObject', null, 'objectB', null)).toThrowError();
-    expect(() => connectObjects('objectA', null, 'unknownObject', null)).toThrowError();
+    expect(() => ea.connectObjects('unknownObject', null, 'objectB', null)).toThrowError();
+    expect(() => ea.connectObjects('objectA', null, 'unknownObject', null)).toThrowError();
   });
 });
