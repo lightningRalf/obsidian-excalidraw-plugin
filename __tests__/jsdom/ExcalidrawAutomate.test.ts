@@ -1,6 +1,7 @@
 import { ExcalidrawAutomate } from "../../src/ExcalidrawAutomate";
 import { mockApp, mockVault, mockMetadataCache, mockWorkspace } from "../../src/__mocks__/obsidian";
 
+
 describe("ExcalidrawAutomate", () => {
   let ea: ExcalidrawAutomate;
 
@@ -11,7 +12,7 @@ describe("ExcalidrawAutomate", () => {
     global.app.metadataCache = mockMetadataCache;
     global.app.workspace = mockWorkspace;
 
-    ea = new ExcalidrawAutomate(mockApp.plugins.plugins["obsidian-excalidraw-plugin"]);
+    ea = new ExcalidrawAutomate();
   });
 
   afterEach(() => {
