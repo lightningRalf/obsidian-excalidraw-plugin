@@ -31,4 +31,10 @@ export class ModalMock implements Modal {
 	onClose(): void {
 		throw new Error("Method not implemented.");
 	}
+	setTitle(title: string): void {
+		throw new Error("Method not implemented.");
+	}
+	setContent(content: string | HTMLElement): void {
+		throw new Error("Method not implemented.");
+	}
 }
