@@ -32,3 +32,4 @@ code2prompt*
 .aider*
 .env
 .venv*
+coverage/
