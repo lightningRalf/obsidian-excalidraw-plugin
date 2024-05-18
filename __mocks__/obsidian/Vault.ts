@@ -67,6 +67,21 @@ export class VaultMock implements Vault {
     getFiles(): TFile[] {
         throw new Error("Method not implemented.");
     }
+    on(eventName: string, callback: (...args: any[]) => void, ctx?: any): void {
+        throw new Error("Method not implemented.");
+    }
+
+    getConfig(key: string): any {
+        throw new Error("Method not implemented.");
+    }
+
+    off(eventName: string, callback: (...args: any[]) => void, ctx?: any): void {
+        throw new Error("Method not implemented.");
+    }
+
+    offref(ref: any): void {
+        throw new Error("Method not implemented.");
+    }
     getName(): string {
         return "MockVault";  // Provide a mock implementation
     }
