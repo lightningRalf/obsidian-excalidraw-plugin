@@ -1,7 +1,7 @@
-import { TFile, TFolder, MetadataCache } from "obsidian";
+import { TFile, TFolder, MetadataCache, CachedMetadata } from "obsidian";
 
 export class MetadataCacheMock implements MetadataCache {
-  getCache(file: TFile): any {
+  getCache(path: string): CachedMetadata | null {
     throw new Error("Method not implemented.");
   }
 
