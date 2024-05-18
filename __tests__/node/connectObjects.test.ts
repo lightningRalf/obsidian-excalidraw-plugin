@@ -1,6 +1,8 @@
 import { ExcalidrawAutomate } from '../../src/ExcalidrawAutomate';
-import { ExcalidrawPlugin } from '../../src/ExcalidrawPlugin'; // Mock plugin import
-jest.mock("obsidian");
+import { jest } from "@jest/globals";
+
+// Mocking the Obsidian API and ExcalidrawData dependencies
+jest.mock("ExcalidrawPlugin");
 
 describe('connectObjects functionality', () => {
   let ea: ExcalidrawAutomate;
