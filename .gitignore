@@ -29,3 +29,6 @@ tmp/*
 # Others 
 obsidian-excalidraw-plugin.md
 code2prompt*
+.aider*
+.env
+.venv*
