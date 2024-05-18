@@ -1,4 +1,4 @@
-import type { Workspace, WorkspaceLeaf, EventRef, TFile, TAbstractFile, Menu, Editor, MarkdownView, MarkdownFileInfo, Tasks, WorkspaceWindow } from "obsidian";
+import type { WorkspaceLeaf, EventRef, TFile, TAbstractFile, Menu, Editor, MarkdownView, MarkdownFileInfo, Tasks, WorkspaceWindow } from "obsidian";
 import { MockEventRef } from './mockHelpers';
 
 interface Workspace {
