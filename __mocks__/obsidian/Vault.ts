@@ -1,4 +1,28 @@
-import type { Vault, TAbstractFile, TFile, TFolder, DataWriteOptions } from "obsidian";
+import type { Vault, TAbstractFile, TFile, TFolder, DataWriteOptions, EventRef } from "obsidian";
+
+class MockEventRef implements EventRef {
+    private callback: Function;
+    private eventName: string;
+    private context: any;
+
+    constructor(eventName: string, callback: Function, context?: any) {
+        this.eventName = eventName;
+        this.callback = callback;
+        this.context = context;
+    }
+
+    // Method to simulate detaching the event listener
+    detach() {
+        console.log(`Detaching event ${this.eventName} from context`, this.context);
+        // You might want to add logic to actually remove the listener if your mock supports it
+    }
+
+    // Additional methods to interact with the mock during tests
+    trigger(args: any[]) {
+        console.log(`Triggering event ${this.eventName} with args`, args);
+        this.callback.apply(this.context, args);
+    }
+}
 
 export class VaultMock implements Vault {
     adapter: any;  // Placeholder for the adapter property
@@ -67,18 +91,16 @@ export class VaultMock implements Vault {
     getFiles(): TFile[] {
         throw new Error("Method not implemented.");
     }
-    on(eventName: string, callback: (...args: any[]) => void, ctx?: any): void {
-        throw new Error("Method not implemented.");
+    on(eventName: "create" | "modify" | "delete" | "rename", callback: (...args: any[]) => void, ctx?: any): EventRef {
+        // Your code logic here. Return a mock EventRef.
+        return new MockEventRef(eventName, callback, ctx);
     }
-
     getConfig(key: string): any {
         throw new Error("Method not implemented.");
     }
-
     off(eventName: string, callback: (...args: any[]) => void, ctx?: any): void {
         throw new Error("Method not implemented.");
     }
-
     offref(ref: any): void {
         throw new Error("Method not implemented.");
     }
