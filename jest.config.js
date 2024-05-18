@@ -3,7 +3,7 @@ module.exports = {
   projects: [
     {
       displayName: 'jsdom',
-      testEnvironment: 'jest-environment-jsdom',
+      testEnvironment: 'jsdom',
       testMatch: ['<rootDir>/__tests__/jsdom/*.test.ts'],
       setupFilesAfterEnv: ['<rootDir>/__mocks__/obsidian.ts'],
       moduleNameMapper: {
@@ -28,7 +28,7 @@ module.exports = {
   ],
   collectCoverage: true,
   coverageDirectory: 'coverage',
-  coverageReporters: ['text', 'lcov'],
+  coverageReporters: ['text-summary', 'text', 'lcov'],
   globals: {
     'ts-jest': {
       tsconfig: 'tsconfig.json',
