@@ -8,9 +8,6 @@
     "allowJs": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
-    "paths": {
-      "obsidian": ["node_modules/obsidian/dist/obsidian.d.ts"]
-    },
     "esModuleInterop": true,
     "importHelpers": true,
     "strict": true,
