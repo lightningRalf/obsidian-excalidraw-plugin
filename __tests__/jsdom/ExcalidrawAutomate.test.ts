@@ -1,5 +1,5 @@
 import { ExcalidrawAutomate } from "../../src/ExcalidrawAutomate";
-import { App, Vault, MetadataCache, Workspace } from "../../__mocks__/obsidian";
+import { AppMock as App, VaultMock as Vault, MetadataCacheMock as MetadataCache, WorkspaceMock as Workspace } from "../../__mocks__/obsidian";
 
 
 describe("ExcalidrawAutomate", () => {
@@ -27,7 +27,7 @@ describe("ExcalidrawAutomate", () => {
 
       await ea.create({ filename, foldername, plaintext: content });
 
-      expect(mockVault.create).toHaveBeenCalledWith(expect.stringContaining(foldername + "/" + filename), expect.stringContaining(content));
+      expect(Vault.create).toHaveBeenCalledWith(expect.stringContaining(foldername + "/" + filename), expect.stringContaining(content));
     });
 
     // Additional tests for file handling functionalities

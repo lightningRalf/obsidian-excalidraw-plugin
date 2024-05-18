@@ -1,10 +1,11 @@
-import { ExcalidrawAutomate } from '../../src/ExcalidrawAutomate';
+import { ExcalidrawAutomate, ExcalidrawPlugin } from '../../src/ExcalidrawAutomate';
 
 describe('connectObjects functionality', () => {
   let ea: ExcalidrawAutomate;
 
   beforeEach(() => {
-    ea = new ExcalidrawAutomate(); // Pass mock plugin instance to constructor
+    const mockPlugin = {} as ExcalidrawPlugin; // Mocking the plugin instance
+    ea = new ExcalidrawAutomate(mockPlugin); // Pass mock plugin instance to constructor
   });
 
   it('should return a string when connecting two objects', () => {

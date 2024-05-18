@@ -1,15 +1,15 @@
 import { describe, it, expect, jest } from '@jest/globals';
 import ExcalidrawView from '../../src/ExcalidrawView';
 import { ExcalidrawAutomate } from '../../src/ExcalidrawAutomate';
-import { App, Vault, MetadataCache, Workspace } from '../../__mocks__/obsidian';
+import { AppMock as App, VaultMock as Vault, MetadataCacheMock as MetadataCache, WorkspaceMock as Workspace } from '../../__mocks__/obsidian';
 
 describe('ExcalidrawView', () => {
   beforeEach(() => {
     // Setup mock for Obsidian API
-    global.app = App;
-    global.app.vault = Vault;
-    global.app.metadataCache = MetadataCache;
-    global.app.workspace = Workspace;
+    global.app = new App();
+    global.app.vault = new Vault();
+    global.app.metadataCache = new MetadataCache();
+    global.app.workspace = new Workspace();
   });
 
   it('should toggle view mode correctly', () => {
