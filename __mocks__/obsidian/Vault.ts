@@ -1,4 +1,4 @@
-import type { Vault, TAbstractFile, TFile, TFolder, DataWriteOptions } from "obsidian";
+import type { Vault, TAbstractFile, TFile, TFolder, DataWriteOptions, EventRef } from "obsidian";
 import { MockEventRef } from './mockHelpers';
 
 export class VaultMock implements Vault {
