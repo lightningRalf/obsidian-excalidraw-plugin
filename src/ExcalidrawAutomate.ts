@@ -35,8 +35,6 @@ import {
   REG_LINKINDEX_INVALIDCHARS,
   THEME_FILTER,
   mermaidToExcalidraw,
-  MD_TEXTELEMENTS,
-  MD_DRAWING,
 } from "src/constants/constants";
 import { blobToBase64, checkAndCreateFolder, getDrawingFilename, getExcalidrawEmbeddedFilesFiletree, getListOfTemplateFiles, getNewUniqueFilepath, hasExcalidrawEmbeddedImagesTreeChanged, } from "src/utils/FileUtils";
 import {
@@ -51,7 +49,6 @@ import {
   getSVG,
   isMaskFile,
   isVersionNewerThanOther,
-  log,
   scaleLoadedImage,
   wrapTextAtCharLength,
 } from "src/utils/Utils";
@@ -59,7 +56,7 @@ import { getAttachmentsFolderAndFilePath, getLeaf, getNewOrAdjacentLeaf, isObsid
 import { AppState, BinaryFileData,  DataURL,  ExcalidrawImperativeAPI, Point } from "@zsviczian/excalidraw/types/excalidraw/types";
 import { EmbeddedFile, EmbeddedFilesLoader, FileData } from "src/EmbeddedFileLoader";
 import { tex2dataURL } from "src/LaTeX";
-import { GenericInputPrompt, NewFileActions, Prompt } from "src/dialogs/Prompt";
+import { GenericInputPrompt, NewFileActions } from "src/dialogs/Prompt";
 import { t } from "src/lang/helpers";
 import { ScriptEngine } from "src/Scripts";
 import { ConnectionPoint, DeviceType  } from "src/types";
@@ -81,7 +78,7 @@ import { TInput } from "colormaster/types";
 import {ConversionResult, svgToExcalidraw} from "src/svgToExcalidraw/parser"
 import { ROUNDNESS } from "src/constants/constants";
 import { ClipboardData } from "@zsviczian/excalidraw/types/excalidraw/clipboard";
-import { emulateKeysForLinkClick, KeyEvent, PaneTarget } from "src/utils/ModifierkeyHelper";
+import { emulateKeysForLinkClick, PaneTarget } from "src/utils/ModifierkeyHelper";
 import { Mutable } from "@zsviczian/excalidraw/types/excalidraw/utility-types";
 import PolyBool from "polybooljs";
 import { EmbeddableMDCustomProps } from "./dialogs/EmbeddableSettings";
@@ -91,9 +88,8 @@ import {
   extractCodeBlocks as _extractCodeBlocks,
 } from "./utils/AIUtils";
 import { EXCALIDRAW_AUTOMATE_INFO, EXCALIDRAW_SCRIPTENGINE_INFO } from "./dialogs/SuggesterInfo";
-import { CropImage } from "./utils/CropImage";
-import { has } from "./svgToExcalidraw/attributes";
 import { getFrameBasedOnFrameNameOrId } from "./utils/ExcalidrawViewUtils";
+import { log } from "./utils/DebugHelper";
 
 extendPlugins([
   HarmonyPlugin,
@@ -134,7 +130,7 @@ export class ExcalidrawAutomate {
 
   public help(target: Function | string) {
     if (!target) {
-      console.log("Usage: ea.help(ea.functionName) or ea.help('propertyName') or ea.help('utils.functionName') - notice property name and utils function name is in quotes");
+      log("Usage: ea.help(ea.functionName) or ea.help('propertyName') or ea.help('utils.functionName') - notice property name and utils function name is in quotes");
       return;
     }
   
@@ -153,14 +149,14 @@ export class ExcalidrawAutomate {
     }
   
     if(!funcInfo) {
-      console.log("Usage: ea.help(ea.functionName) or ea.help('propertyName') or ea.help('utils.functionName') - notice property name and utils function name is in quotes");
+      log("Usage: ea.help(ea.functionName) or ea.help('propertyName') or ea.help('utils.functionName') - notice property name and utils function name is in quotes");
       return;
     }
 
     let isMissing = true;
     if (funcInfo.code) {
       isMissing = false;
-      console.log(`Declaration: ${funcInfo.code}`);
+      log(`Declaration: ${funcInfo.code}`);
     }
     if (funcInfo.desc) {
       isMissing = false;
@@ -171,10 +167,10 @@ export class ExcalidrawAutomate {
         .replace(/<a onclick='window\.open\("(.*?)"\)'>(.*?)<\/a>/g, (_, href, text) => `%c\u200b${text}%c\u200b (link: ${href})`); // Zero-width non-joiner
   
       const styles = Array.from({ length: (formattedDesc.match(/%c/g) || []).length }, (_, i) => i % 2 === 0 ? 'color: #007bff;' : '');
-      console.log(`Description: ${formattedDesc}`, ...styles);
+      log(`Description: ${formattedDesc}`, ...styles);
     } 
     if (isMissing) {
-      console.log("Description not available for this function.");
+      log("Description not available for this function.");
     }
   }
 
@@ -722,7 +718,7 @@ export class ExcalidrawAutomate {
 
     const generateMD = ():string => {
       const textElements = this.getElements().filter(el => el.type === "text") as ExcalidrawTextElement[];
-      let outString = `${MD_TEXTELEMENTS}\n`;
+      let outString = `# Excalidraw Data\n## Text Elements\n`;
       textElements.forEach(te=> {
         outString += `${te.rawText ?? (te.originalText ?? te.text)} ^${te.id}\n\n`;
       });
@@ -733,7 +729,7 @@ export class ExcalidrawAutomate {
       })
   
       outString += Object.keys(this.imagesDict).length > 0
-        ? "\n# Embedded files\n"
+        ? `\n## Embedded Files\n`
         : "";
         
       Object.keys(this.imagesDict).forEach((key: FileId)=> {
@@ -2645,7 +2641,7 @@ export class ExcalidrawAutomate {
   importSVG(svgString:string):boolean {
     const res:ConversionResult =  svgToExcalidraw(svgString);
     if(res.hasErrors) {
-      new Notice (`There were errors while parsing the given SVG:\n${[...res.errors].map((el) => el.innerHTML)}`);
+      new Notice (`There were errors while parsing the given SVG:\n${res.errors}`);
       return false;
     }
     this.copyViewElementsToEAforEditing(res.content);
@@ -2778,9 +2774,9 @@ async function getTemplate(
       textMode,
     );
 
-    let trimLocation = data.search(new RegExp(`^${MD_TEXTELEMENTS}$`,"m"));
+    let trimLocation = data.search(/^##? Text Elements$/m);
     if (trimLocation == -1) {
-      trimLocation = data.search(`${MD_DRAWING}\n`);
+      trimLocation = data.search(/##? Drawing\n/);
     }
 
     let scene = excalidrawData.scene;
