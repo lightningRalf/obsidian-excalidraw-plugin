@@ -1,4 +1,4 @@
-import type { App, FileManager, Keymap, MetadataCache, Scope, UserEvent, Vault, Workspace } from "obsidian";
+import type { App, FileManager, Keymap, MetadataCache, Scope, UserEvent, Vault, Workspace, TFile } from "obsidian";
 
 export class AppMock implements App {
 	get keymap(): Keymap {
@@ -31,9 +31,9 @@ export class AppMock implements App {
 	getObsidianUrl(file: TFile): string {
 		throw new Error("Not implemented.");
 	}
-	metadataTypeManager: {
+	metadataTypeManager = {
 		setType(name: string, type: string): void {
 			throw new Error("Not implemented.");
 		}
-	};
+	}
 }
