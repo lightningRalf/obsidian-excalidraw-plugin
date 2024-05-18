@@ -7,10 +7,10 @@ describe("ExcalidrawAutomate", () => {
 
   beforeEach(() => {
     // Setup mock Obsidian environment
-    global.app = mockApp;
-    global.app.vault = mockVault;
-    global.app.metadataCache = mockMetadataCache;
-    global.app.workspace = mockWorkspace;
+    global.app = App;
+    global.app.vault = Vault;
+    global.app.metadataCache = MetadataCache;
+    global.app.workspace = Workspace;
 
     ea = new ExcalidrawAutomate(App);
   });
