@@ -16,48 +16,59 @@ export class WorkspaceMock implements Workspace {
     throw new Error("Method not implemented.");
   }
 
-  on(name: 'quick-preview', callback: (file: TFile, data: string) => any, ctx?: any): EventRef;
+  on(eventName: 'quick-preview', callback: (file: TFile, data: string) => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
-  on(name: 'resize', callback: () => any, ctx?: any): EventRef;
+  }
+  on(eventName: 'resize', callback: () => any, ctx?: any): EventRef;
       return new MockEventRef(name, callback, ctx);
-  on(name: 'active-leaf-change', callback: (leaf: WorkspaceLeaf | null) => any, ctx?: any): EventRef;
+  on(eventName: 'active-leaf-change', callback: (leaf: WorkspaceLeaf | null) => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
-  on(name: 'file-open', callback: (file: TFile | null) => any, ctx?: any): EventRef;
+  }
+  on(eventName: 'file-open', callback: (file: TFile | null) => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
-  on(name: 'layout-change', callback: () => any, ctx?: any): EventRef;
+  }
+  on(eventName: 'layout-change', callback: () => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
-  on(name: 'window-open', callback: (win: WorkspaceWindow, window: Window) => any, ctx?: any): EventRef;
+  }
+  on(eventName: 'window-open', callback: (win: WorkspaceWindow, window: Window) => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
-  on(name: 'window-close', callback: (win: WorkspaceWindow, window: Window) => any, ctx?: any): EventRef;
+  }
+  on(eventName: 'window-close', callback: (win: WorkspaceWindow, window: Window) => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
-  on(name: 'css-change', callback: () => any, ctx?: any): EventRef;
+  }
+  on(eventName: 'css-change', callback: () => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
-  on(name: 'file-menu', callback: (menu: Menu, file: TAbstractFile, source: string, leaf?: WorkspaceLeaf) => any, ctx?: any): EventRef;
+  }
+  on(eventName: 'file-menu', callback: (menu: Menu, file: TAbstractFile, source: string, leaf?: WorkspaceLeaf) => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
-  on(name: 'files-menu', callback: (menu: Menu, files: TAbstractFile[], source: string, leaf?: WorkspaceLeaf) => any, ctx?: any): EventRef;
+  }
+  on(eventName: 'files-menu', callback: (menu: Menu, files: TAbstractFile[], source: string, leaf?: WorkspaceLeaf) => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
-  on(name: 'url-menu', callback: (menu: Menu, url: string) => any, ctx?: any): EventRef;
+  }
+  on(eventName: 'url-menu', callback: (menu: Menu, url: string) => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
-  on(name: 'editor-menu', callback: (menu: Menu, editor: Editor, info: MarkdownView | MarkdownFileInfo) => any, ctx?: any): EventRef;
+  }
+  on(eventName: 'editor-menu', callback: (menu: Menu, editor: Editor, info: MarkdownView | MarkdownFileInfo) => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
-  on(name: 'editor-change', callback: (editor: Editor, info: MarkdownView | MarkdownFileInfo) => any, ctx?: any): EventRef;
+  }
+  on(eventName: 'editor-change', callback: (editor: Editor, info: MarkdownView | MarkdownFileInfo) => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
-  on(name: 'editor-paste', callback: (evt: ClipboardEvent, editor: Editor, info: MarkdownView | MarkdownFileInfo) => any, ctx?: any): EventRef;
+  }
+  on(eventName: 'editor-paste', callback: (evt: ClipboardEvent, editor: Editor, info: MarkdownView | MarkdownFileInfo) => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
-  on(name: 'editor-drop', callback: (evt: DragEvent, editor: Editor, info: MarkdownView | MarkdownFileInfo) => any, ctx?: any): EventRef;
+  }
+  on(eventName: 'editor-drop', callback: (evt: DragEvent, editor: Editor, info: MarkdownView | MarkdownFileInfo) => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
-  on(name: 'quit', callback: (tasks: Tasks) => any, ctx?: any): EventRef;
-    // on(name: string, callback: (...args: any[]) => any, ctx?: any): EventRef {
-    // Actual implementation that just creates a mock EventRef
-    // The real functionality would handle different types of events appropriately
-    return new MockEventRef(name, callback, ctx);
+  }
+  on(eventName: 'quit', callback: (tasks: Tasks) => any, ctx?: any): EventRef {
+      return new MockEventRef(name, callback, ctx);
   }
 
-  off(name: string, callback: (...args: any[]) => any, ctx?: any): void {
+  off(eventName: string, callback: (...args: any[]) => any, ctx?: any): void {
     throw new Error("Method not implemented.");
   }
 
-  trigger(name: string, ...data: any[]): void {
+  trigger(eventName: string, ...data: any[]): void {
     throw new Error("Method not implemented.");
   }
 }
