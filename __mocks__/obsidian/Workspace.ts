@@ -1,4 +1,4 @@
-import type { Workspace, WorkspaceLeaf, EventRef } from "obsidian";
+import type { Workspace, WorkspaceLeaf, EventRef, TFile } from "obsidian";
 import { MockEventRef } from './mockHelpers';
 
 export class WorkspaceMock implements Workspace {
@@ -16,8 +16,14 @@ export class WorkspaceMock implements Workspace {
     throw new Error("Method not implemented.");
   }
 
-  on(name: "quick-preview" | "resize" | "active-leaf-change" | "file-open", callback: (...args: any[]) => any, ctx?: any): EventRef {
-      return new MockEventRef(name, callback, ctx);
+  on(name: "quick-preview", callback: (file: TFile, data: string) => any, ctx?: any): EventRef;
+  on(name: "resize", callback: () => any, ctx?: any): EventRef;
+  on(name: "active-leaf-change", callback: (leaf: WorkspaceLeaf | null) => any, ctx?: any): EventRef;
+  on(name: "file-open", callback: (file: TFile | null) => any, ctx?: any): EventRef;
+  on(name: string, callback: (...args: any[]) => any, ctx?: any): EventRef {
+    // Actual implementation that just creates a mock EventRef
+    // The real functionality would handle different types of events appropriately
+    return new MockEventRef(name, callback, ctx);
   }
 
   off(name: string, callback: (...args: any[]) => any, ctx?: any): void {
