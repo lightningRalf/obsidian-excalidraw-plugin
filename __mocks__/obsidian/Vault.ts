@@ -43,6 +43,18 @@ export class VaultMock implements Vault {
     readBinary(file: TFile): Promise<ArrayBuffer> {
         throw new Error("Method not implemented.");
     }
+    getResourcePath(file: TFile): string {
+        throw new Error("Method not implemented.");
+    }
+    modifyBinary(file: TFile, data: ArrayBuffer): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
+    append(file: TFile, data: string): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
+    process(file: TFile): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
     getName(): string {
         return "MockVault";  // Provide a mock implementation
     }
