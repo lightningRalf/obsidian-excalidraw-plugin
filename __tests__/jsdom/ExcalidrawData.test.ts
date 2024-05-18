@@ -1,19 +1,16 @@
 import { ExcalidrawData } from "../../src/ExcalidrawData";
-import { ExcalidrawPlugin, TFile } from "obsidian";
-import { jest } from "@jest/globals";
-
 // Mocking the Obsidian API and ExcalidrawData dependencies
 jest.mock("obsidian");
 jest.mock("../../src/ExcalidrawData");
 
 describe("ExcalidrawData", () => {
   let data: ExcalidrawData;
-  let plugin: ExcalidrawPlugin;
-  let file: TFile;
+  let plugin: any; // Mocked plugin instance
+  let file: any; // Mocked file instance
 
   beforeEach(() => {
-    plugin = new ExcalidrawPlugin();
-    file = new TFile();
+    plugin = {}; // Mocking the plugin instance
+    file = {}; // Mocking the file instance
     data = new ExcalidrawData(plugin);
   });
 
@@ -26,16 +23,16 @@ describe("ExcalidrawData", () => {
       const mockData = '{"elements": [], "appState": {}}';
       jest.mocked(plugin.app.vault.read).mockResolvedValue(mockData);
 
-      await data.loadData(file, false, "text");
+      await data.loadData("mockFilePath", false, "text");
 
-      expect(plugin.app.vault.read).toHaveBeenCalledWith(file);
+      expect(plugin.app.vault.read).toHaveBeenCalledWith("mockFilePath");
       expect(data.scene).toEqual(JSON.parse(mockData));
     });
 
     it("should handle file read errors gracefully", async () => {
       jest.mocked(plugin.app.vault.read).mockRejectedValue(new Error("File read error"));
 
-      await expect(data.loadData(file, false, "text")).rejects.toThrow("File read error");
+      await expect(data.loadData("mockFilePath", false, "text")).rejects.toThrow("File read error");
     });
   });
 });
