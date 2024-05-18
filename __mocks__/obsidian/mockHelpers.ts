@@ -1,3 +1,5 @@
+import type { EventRef } from "obsidian";
+
 export class MockEventRef implements EventRef {
     private callback: Function;
     private eventName: string;
