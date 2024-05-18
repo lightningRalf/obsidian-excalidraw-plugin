@@ -1,4 +1,4 @@
-import type { Vault, TAbstractFile, TFile, TFolder } from "obsidian";
+import type { Vault, TAbstractFile, TFile, TFolder, DataWriteOptions } from "obsidian";
 
 export class VaultMock implements Vault {
     adapter: any;  // Placeholder for the adapter property
@@ -52,7 +52,7 @@ export class VaultMock implements Vault {
     append(file: TFile, data: string): Promise<void> {
         throw new Error("Method not implemented.");
     }
-    process(file: TFile): Promise<void> {
+    process(file: TFile, fn: (data: string) => string, options?: DataWriteOptions): Promise<string> {
         throw new Error("Method not implemented.");
     }
     getName(): string {
