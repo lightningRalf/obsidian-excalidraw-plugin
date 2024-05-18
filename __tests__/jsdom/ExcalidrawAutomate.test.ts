@@ -1,5 +1,5 @@
 import { ExcalidrawAutomate } from "../../src/ExcalidrawAutomate";
-import { mockApp, mockVault, mockMetadataCache, mockWorkspace } from "../../src/__mocks__/obsidian";
+import { App, Vault, MetadataCache, Workspace } from "../../__mocks__/obsidian";
 
 
 describe("ExcalidrawAutomate", () => {
@@ -12,7 +12,7 @@ describe("ExcalidrawAutomate", () => {
     global.app.metadataCache = mockMetadataCache;
     global.app.workspace = mockWorkspace;
 
-    ea = new ExcalidrawAutomate();
+    ea = new ExcalidrawAutomate(App);
   });
 
   afterEach(() => {
@@ -55,3 +55,4 @@ describe("ExcalidrawAutomate", () => {
     // Additional tests for error handling and edge cases
   });
 });
+
