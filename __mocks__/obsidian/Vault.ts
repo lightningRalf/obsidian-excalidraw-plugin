@@ -55,6 +55,18 @@ export class VaultMock implements Vault {
     process(file: TFile, fn: (data: string) => string, options?: DataWriteOptions): Promise<string> {
         throw new Error("Method not implemented.");
     }
+        copy(file: TAbstractFile, destination: string): Promise<TFile> {
+        throw new Error("Method not implemented.");
+    }
+    getAllLoadedFiles(): TAbstractFile[] {
+        throw new Error("Method not implemented.");
+    }
+    getMarkdownFiles(): TFile[] {
+        throw new Error("Method not implemented.");
+    }
+    getFiles(): TFile[] {
+        throw new Error("Method not implemented.");
+    }
     getName(): string {
         return "MockVault";  // Provide a mock implementation
     }
