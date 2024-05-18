@@ -28,4 +28,15 @@ export class MetadataCacheMock implements MetadataCache {
   trigger(name: string, data?: any): void {
     throw new Error("Method not implemented.");
   }
+  fileToLinktext(file: TFile, sourcePath: string, omitMdExtension?: boolean): string {
+    throw new Error("Method not implemented.");
+  }
+
+  resolvedLinks: Record<string, Record<string, number>> = {};
+  unresolvedLinks: Record<string, Record<string, number>> = {};
+
+  on(eventName: string, callback: (...args: any[]) => void, ctx?: any): EventRef {
+      throw new Error("Method not implemented.");
+  }
+  
 }
