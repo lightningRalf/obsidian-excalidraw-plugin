@@ -31,6 +31,18 @@ export class VaultMock implements Vault {
     getRoot(): TFolder {
         throw new Error("Method not implemented.");
     }
+    getFolderByPath(path: string): TFolder | null {
+        return null; // Provide a mock implementation or return null
+    }
+    createBinary(path: string, data: ArrayBuffer, options?: any): Promise<TFile> {
+        throw new Error("Method not implemented.");
+    }
+    cachedRead(file: TFile): Promise<string> {
+        throw new Error("Method not implemented.");
+    }
+    readBinary(file: TFile): Promise<ArrayBuffer> {
+        throw new Error("Method not implemented.");
+    }
     getName(): string {
         return "MockVault";  // Provide a mock implementation
     }
