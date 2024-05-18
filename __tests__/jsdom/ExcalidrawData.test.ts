@@ -14,7 +14,7 @@ describe("ExcalidrawData", () => {
   beforeEach(() => {
     app = new App();
     file = new TFile();
-    data = new ExcalidrawData(app, file);
+    data = new ExcalidrawData(app);
   });
 
   afterEach(() => {

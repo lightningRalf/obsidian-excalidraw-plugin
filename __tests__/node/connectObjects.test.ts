@@ -1,13 +1,10 @@
 import { ExcalidrawAutomate } from '../../src/ExcalidrawAutomate';
-import { ExcalidrawPlugin } from 'obsidian-excalidraw-plugin'; // Mock import for testing
 
 describe('connectObjects functionality', () => {
   let ea: ExcalidrawAutomate;
-  let plugin: ExcalidrawPlugin; // Mock plugin instance
 
   beforeEach(() => {
-    plugin = new ExcalidrawPlugin(); // Initialize mock plugin instance
-    ea = new ExcalidrawAutomate(plugin); // Pass mock plugin instance to constructor
+    ea = new ExcalidrawAutomate(); // Pass mock plugin instance to constructor removed due to plan
   });
 
   it('should return a string when connecting two objects', () => {
