@@ -104,6 +104,13 @@ export class VaultMock implements Vault {
     offref(ref: any): void {
         throw new Error("Method not implemented.");
     }
+    trigger(eventName: string, ...params: any[]): void {
+        throw new Error("Method not implemented.");
+    }
+    tryTrigger(eventName: string, ...params: any[]): boolean {
+        throw new Error("Method not implemented.");
+        return false; // Returning false as a default behavior, adjust as needed
+    }    
     getName(): string {
         return "MockVault";  // Provide a mock implementation
     }
