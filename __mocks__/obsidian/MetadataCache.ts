@@ -36,7 +36,7 @@ export class MetadataCacheMock implements MetadataCache {
   resolvedLinks: Record<string, Record<string, number>> = {};
   unresolvedLinks: Record<string, Record<string, number>> = {};
 
-  on(eventName: "create" | "modify" | "delete" | "rename", callback: (...args: any[]) => void, ctx?: any): EventRef {
+  on(eventName: "create" | "changed" | "deleted" | "resolve" | "resolved" | "modify" | "delete" | "rename", callback: (...args: any[]) => void, ctx?: any): EventRef {
       // Your code logic here. Return a mock EventRef.
       return new MockEventRef(eventName, callback, ctx);
   }
@@ -44,12 +44,14 @@ export class MetadataCacheMock implements MetadataCache {
       throw new Error("Method not implemented.");
   }
 
-  getLinks(file: TFile): Record<string, number> {
+  getLinks(): { [id: string]: { link: string; displayText: string; original: string; position: any; }[]; } {
       throw new Error("Method not implemented.");
   }
-
-  blockCache: Record<string, any> = {};
-
+  blockCache = {
+      getForFile: (x: any, f: TAbstractFile): any => {
+          throw new Error("Method not implemented.");
+      }
+  }
   off(eventName: string, callback: (...args: any[]) => void, ctx?: any): void {
       throw new Error("Method not implemented.");
   }
