@@ -38,4 +38,5 @@ module.exports = {
   MetadataCache: jest.fn(() => mockMetadataCache),
   Workspace: jest.fn(() => mockWorkspace),
   App: jest.fn(() => mockApp),
+  mockApp, mockVault, mockMetadataCache, mockWorkspace // Exporting the mocks directly for easier import in tests
 };
