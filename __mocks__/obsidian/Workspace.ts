@@ -19,8 +19,9 @@ export class WorkspaceMock implements Workspace {
   on(eventName: 'quick-preview', callback: (file: TFile, data: string) => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
   }
-  on(eventName: 'resize', callback: () => any, ctx?: any): EventRef;
+  on(eventName: 'resize', callback: () => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
+  }
   on(eventName: 'active-leaf-change', callback: (leaf: WorkspaceLeaf | null) => any, ctx?: any): EventRef {
       return new MockEventRef(name, callback, ctx);
   }
