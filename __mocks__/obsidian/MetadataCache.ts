@@ -1,4 +1,4 @@
-import { TFile, TFolder, MetadataCache, CachedMetadata, EventRef } from "obsidian";
+import { TFile, TFolder, TAbstractFile, MetadataCache, CachedMetadata, EventRef } from "obsidian";
 import { MockEventRef } from './mockHelpers';
 
 export class MetadataCacheMock implements MetadataCache {
@@ -54,5 +54,13 @@ export class MetadataCacheMock implements MetadataCache {
   }
   off(eventName: string, callback: (...args: any[]) => void, ctx?: any): void {
       throw new Error("Method not implemented.");
+  }
+  offref(ref: EventRef): void {
+    throw new Error("Method not implemented.");
+  }
+
+  tryTrigger(eventName: string, ...params: any[]): boolean {
+      throw new Error("Method not implemented.");
+      return false; // Assuming a boolean return type for simplicity
   }
 }
