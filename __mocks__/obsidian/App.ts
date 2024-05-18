@@ -22,4 +22,18 @@ export class AppMock implements App {
 	get lastEvent(): UserEvent | null {
 		throw new Error("Not implemented.");
 	}
+	get internalPlugins(): any {
+		throw new Error("Not implemented.");
+	}
+	isMobile(): boolean {
+		throw new Error("Not implemented.");
+	}
+	getObsidianUrl(file: TFile): string {
+		throw new Error("Not implemented.");
+	}
+	metadataTypeManager: {
+		setType(name: string, type: string): void {
+			throw new Error("Not implemented.");
+		}
+	};
 }
