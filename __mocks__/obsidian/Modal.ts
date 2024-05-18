@@ -31,10 +31,12 @@ export class ModalMock implements Modal {
 	onClose(): void {
 		throw new Error("Method not implemented.");
 	}
-	setTitle(title: string): void {
+	setTitle(title: string): this {
 		throw new Error("Method not implemented.");
+		return this;
 	}
-	setContent(content: string | HTMLElement): void {
+	setContent(content: string | DocumentFragment): this {
 		throw new Error("Method not implemented.");
+		return this;
 	}
 }
