@@ -104,6 +104,41 @@ classDiagram
         -observer: MutationObserver | null
         -name: string
     }
+    class ExcalidrawSettingTab {
+        -plugin: ExcalidrawPlugin
+        -requestEmbedUpdate: boolean
+        -requestReloadDrawings: boolean
+        -requestUpdatePinnedPens: boolean
+        -requestUpdateDynamicStyling: boolean
+    }
+    class UniversalInsertFileModal {
+        -plugin: ExcalidrawPlugin
+        -view: ExcalidrawView
+        -center: object
+    }
+    class ImportSVGDialog {
+        -plugin: ExcalidrawPlugin
+        -view: ExcalidrawView
+    }
+    class InsertPDFModal {
+        -plugin: ExcalidrawPlugin
+        -view: ExcalidrawView
+        -borderBox: boolean
+        -gapSize: number
+        -groupPages: boolean
+    }
+    class InsertImageDialog {
+        -plugin: ExcalidrawPlugin
+        -view: ExcalidrawView
+    }
+    class InsertMDDialog {
+        -plugin: ExcalidrawPlugin
+        -view: ExcalidrawView
+    }
+    class EditorHandler {
+        -plugin: ExcalidrawPlugin
+        -activeEditorExtensions: Extension[]
+    }
 
     ExcalidrawPlugin --> ExcalidrawAutomate
     ExcalidrawPlugin --> ExcalidrawView
@@ -116,9 +151,16 @@ classDiagram
     ExcalidrawPlugin --> OpenFileDialog
     ExcalidrawPlugin --> InsertLinkDialog
     ExcalidrawPlugin --> InsertCommandDialog
+    ExcalidrawPlugin --> ExcalidrawSettingTab
+    ExcalidrawPlugin --> EditorHandler
     ExcalidrawView --> ExcalidrawData
     ExcalidrawView --> EmbeddedFilesLoader
     ExcalidrawView --> ExportDialog
     ExcalidrawView --> CanvasNodeFactory
+    ExcalidrawView --> UniversalInsertFileModal
+    ExcalidrawView --> ImportSVGDialog
+    ExcalidrawView --> InsertPDFModal
+    ExcalidrawView --> InsertImageDialog
+    ExcalidrawView --> InsertMDDialog
     ExcalidrawAutomate --> CropImage
     ExcalidrawView --> CustomMutationObserver
